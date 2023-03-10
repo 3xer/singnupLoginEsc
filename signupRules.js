@@ -1,6 +1,6 @@
 document.getElementById("register").addEventListener("click", myfunc);
 document.getElementById("pw").addEventListener("input", passwordStrength)
-const capitalLetters =['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','R','S','T','U','V','X','Y','Z','Å','Ä','Ö']
+
 const names = document.getElementById("name")
 const username = document.getElementById("username")
 const email = document.getElementById("email")
@@ -12,8 +12,10 @@ const alert = document.getElementById("alert")
 
 function passwordStrength(){
     
-    
+    document.getElementById("strenghtIndex").innerText = "";
+
     let strength = 0;
+
     const haveNumber = pw.value.match(/[0-9]/g)
     console.log(haveNumber)
     
@@ -35,8 +37,20 @@ function passwordStrength(){
      if (!!specialChar && specialChar.length >= 1){
         strength++;
      }
-
-     document.getElementById("strenghtIndex").innerText = strength;
+     if(strength == 0){
+        document.getElementById("strenghtIndex").innerText = "Password is bad";
+     }
+     if (strength == 1){
+        document.getElementById("strenghtIndex").innerText = "Password is weak";
+     }
+     if(strength == 2){
+        document.getElementById("strenghtIndex").innerText = "Password is decent";
+     }
+     if(strength == 3){
+        document.getElementById("strenghtIndex").innerText = "Password is strong";
+     }
+     console.log(strength)
+     
 }
 
 
